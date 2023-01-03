@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "464391551314",
+    "project_id": "grofast-d3fe5",
+    "storage_bucket": "grofast-d3fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464391551314:android:eaf16e4f5a12c1749f628b",
+        "android_client_info": {
+          "package_name": "com.ahadjonovss.grofast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464391551314-ia261d156v7vr5cfskl9je7p99m4vn1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahadjonovss.grofast",
+            "certificate_hash": "eb05e9fe481b9aae4cebd0040260cea5667a9d61"
+          }
+        },
+        {
+          "client_id": "464391551314-s08mquoatlek1vuai1ciju3agelkp94i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtm-IasYwjTlZomKAeifieoLTwdAUtDKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464391551314-s08mquoatlek1vuai1ciju3agelkp94i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
