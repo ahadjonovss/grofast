@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:grofast/utils/constants/colors.dart';
-
 import '../../utils/constants/text_styles.dart';
 
 class LoginPage extends StatelessWidget {
