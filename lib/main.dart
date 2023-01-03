@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grofast/utils/instances/app_instances.dart';
 import 'package:grofast/utils/routes/app_routes.dart';
 
 void main() {
+  setUpLocators();
   runApp(const MyApp());
 }
 
