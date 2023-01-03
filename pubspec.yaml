@@ -20,6 +20,8 @@ dependencies:
   get_it: ^7.2.0
   smooth_page_indicator: ^1.0.0+2
   google_fonts: ^3.0.1
+  keyboard_dismisser: ^3.0.0
+  zoom_tap_animation: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +37,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/onboarding/
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
