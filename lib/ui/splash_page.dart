@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grofast/utils/contants/image.dart';
 import 'package:grofast/utils/routes/app_routes.dart';
+import '../utils/constants/image.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          decoration:  const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(AppImages.splash), fit: BoxFit.fill)),
         ),
