@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:grofast/utils/instances/app_instances.dart';
 import 'package:grofast/utils/routes/app_routes.dart';
+import 'package:grofast/view_models/authorization_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   setUpLocators();
-  runApp(const MyApp());
+  runApp( MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_)=>AuthorizationViewModel())
+    ],
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
