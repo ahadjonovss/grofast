@@ -25,6 +25,7 @@ dependencies:
   email_validator: ^2.1.17
   firebase_core: ^2.4.1
   lottie: ^2.1.0
+  shared_preferences: ^2.0.15
 
 
 dev_dependencies:
