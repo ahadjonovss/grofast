@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
                               onTap: (){
                                 Navigator.pushNamed(context, RouteName.registerPage);
                               },
-                              child: const Text("Sign In",style: TextStyle(color: AppColors.C_4CBB5E,fontWeight: FontWeight.bold,fontSize: 16),))
+                              child: const Text("Sign Up",style: TextStyle(color: AppColors.C_4CBB5E,fontWeight: FontWeight.bold,fontSize: 16),))
                         ],
                       ),
                     )

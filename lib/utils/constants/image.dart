@@ -14,4 +14,5 @@ class AppImages{
   static const google = "assets/icons/google.png";
   static const twitter = "assets/icons/twitter.png";
   static const facebook = "assets/icons/facebook.png";
+  static const user = "assets/icons/user.png";
 }
