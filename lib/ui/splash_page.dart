@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:grofast/data/repositories/storage_repository.dart';
 import 'package:grofast/utils/routes/app_routes.dart';
+import 'package:grofast/view_models/authorization_view_model.dart';
+import 'package:provider/provider.dart';
 import '../utils/constants/image.dart';
 
 class SplashPage extends StatelessWidget {
@@ -7,9 +10,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<AuthorizationViewModel>().getToken();
     Future.delayed(const Duration(seconds: 3)).then((value) =>
         Navigator.pushNamedAndRemoveUntil(
-            context, RouteName.onboardingPage, (route) => false));
+            context, context.read<AuthorizationViewModel>().token==null?RouteName.onboardingPage:RouteName.mainPage, (route) => false));
     return Scaffold(
       body: SafeArea(
         child: Container(

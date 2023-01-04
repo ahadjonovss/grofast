@@ -17,7 +17,7 @@ class AuthButton extends StatelessWidget {
       onTap: (){
         context.read<AuthorizationViewModel>().checkInvalidity(email, password);
         if(name.isNotEmpty){
-         context.read<AuthorizationViewModel>().initCurrentUser(email, password, name);
+         context.read<AuthorizationViewModel>().initNewUser(email, password, name);
          context.read<AuthorizationViewModel>().signUp(context);
         }else{
           context.read<AuthorizationViewModel>().signIn(context, email: email, password: password);

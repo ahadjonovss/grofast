@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grofast/data/models/user_model.dart';
+import 'package:grofast/data/repositories/storage_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/instances/app_instances.dart';
 
 class AuthorizationRepository {
@@ -18,7 +20,8 @@ class AuthorizationRepository {
           .collection("users")
           .doc(docId.id)
           .update({"userId": docId.id}).then((value) async {
-        // await myLocator<FirebaseFirestore>().saveString("token", docId.id);
+        await StorageRepository.setToken(docId.id);
+
       });
       return true;
     }
@@ -35,6 +38,7 @@ class AuthorizationRepository {
     else if (user.docs[0]["password"] != password) {
       return "Incorrect Password";
     } else {
+      await StorageRepository.setToken(user.docs[0]["userId"]);
       return "Welcome";
     }
   }

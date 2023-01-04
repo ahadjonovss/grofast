@@ -11,6 +11,5 @@ setUpLocators()  {
   myLocator.registerLazySingleton(() => FirebaseFirestore.instance);
   myLocator.registerLazySingleton(() => AuthorizationRepository());
   myLocator.registerLazySingleton(() => AuthorizationViewModel());
-  myLocator.registerLazySingleton(() => StorageRepository());
-  myLocator.registerLazySingleton(() => SharedPreferences.getInstance());
+  myLocator.registerLazySingleton(() => StorageRepository.getInstance());
 }

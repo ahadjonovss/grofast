@@ -5,9 +5,12 @@ import 'package:grofast/utils/routes/app_routes.dart';
 import 'package:grofast/view_models/authorization_view_model.dart';
 import 'package:provider/provider.dart';
 
+import 'data/repositories/storage_repository.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  StorageRepository.getInstance();
   await Firebase.initializeApp();
   setUpLocators();
   runApp( MultiProvider(

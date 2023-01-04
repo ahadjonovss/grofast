@@ -2,19 +2,21 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:grofast/data/models/user_model.dart';
 import 'package:grofast/data/repositories/authorization_repository.dart';
+import 'package:grofast/data/repositories/storage_repository.dart';
 import 'package:grofast/ui/authorization/widgets/loading_dialog.dart';
 import 'package:grofast/utils/instances/app_instances.dart';
 import 'package:grofast/utils/routes/app_routes.dart';
 
 class AuthorizationViewModel extends ChangeNotifier{
 
-  UserModel? currentUser;
+  UserModel? newUser;
+  String? token;
   bool isInvalidPassword=false;
   bool isInvalidEmail=false;
 
 
   signUp(context) async{
-    bool isRegistred = await myLocator<AuthorizationRepository>().signUp(currentUser!);
+    bool isRegistred = await myLocator<AuthorizationRepository>().signUp(newUser!);
     if(isRegistred==true){
       loadingDialog(context,"Signing Up");
       Future.delayed(const Duration(seconds: 2)).then((value) => Navigator.pushNamedAndRemoveUntil(context, RouteName.mainPage, (route) => false));
@@ -36,8 +38,8 @@ class AuthorizationViewModel extends ChangeNotifier{
 
 
 
-  initCurrentUser(String email, String password,String name){
-    currentUser = UserModel(name: name, password: password, email: email, orders: []);
+  initNewUser(String email, String password,String name){
+    newUser = UserModel(name: name, password: password, email: email, orders: []);
     notifyListeners();
   }
 
@@ -49,6 +51,11 @@ class AuthorizationViewModel extends ChangeNotifier{
     }
     notifyListeners();
   }
+
+  getToken(){
+    token=StorageRepository.getToken();
+  }
+
 
 
 
