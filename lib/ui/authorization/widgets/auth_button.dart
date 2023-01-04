@@ -16,12 +16,9 @@ class AuthButton extends StatelessWidget {
     return ZoomTapAnimation(
       onTap: (){
         context.read<AuthorizationViewModel>().checkInvalidity(email, password);
-        print("Some");
-        print(name);
         if(name.isNotEmpty){
-          print("Adding user");
          context.read<AuthorizationViewModel>().initCurrentUser(email, password, name);
-         context.read<AuthorizationViewModel>().addUser();
+         context.read<AuthorizationViewModel>().addUser(context);
 
         }
       },

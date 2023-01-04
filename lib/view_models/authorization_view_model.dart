@@ -2,7 +2,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:grofast/data/models/user_model.dart';
 import 'package:grofast/data/repositories/authorization_repository.dart';
+import 'package:grofast/ui/authorization/widgets/loading_dialog.dart';
 import 'package:grofast/utils/instances/app_instances.dart';
+import 'package:grofast/utils/routes/app_routes.dart';
 
 class AuthorizationViewModel extends ChangeNotifier{
 
@@ -11,7 +13,15 @@ class AuthorizationViewModel extends ChangeNotifier{
   bool isInvalidEmail=false;
 
 
-  addUser()=>myLocator<AuthorizationRepository>().addUser(currentUser!);
+  addUser(context) async{
+    bool isRegistred = await myLocator<AuthorizationRepository>().addUser(currentUser!);
+    if(isRegistred==true){
+      loadingDialog(context);
+      Future.delayed(const Duration(seconds: 2)).then((value) => Navigator.pushNamedAndRemoveUntil(context, RouteName.mainPage, (route) => false));
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Current email has already used"),duration: Duration(seconds: 2),));
+    }
+  }
 
   initCurrentUser(String email, String password,String name){
     currentUser = UserModel(name: name, password: password, email: email, orders: []);
@@ -26,5 +36,8 @@ class AuthorizationViewModel extends ChangeNotifier{
     }
     notifyListeners();
   }
+
+
+
 
 }
