@@ -5,6 +5,7 @@ import '../../utils/instances/app_instances.dart';
 class AuthorizationRepository{
 
   Future<void> addUser(UserModel newUser)async{
+    print("adding user");
       DocumentReference docId = await myLocator<FirebaseFirestore>().collection("users").add(newUser.toJson());
       await myLocator<FirebaseFirestore>().collection("users").doc(docId.id).update({
         "userId":docId.id

@@ -7,14 +7,23 @@ import '../../../view_models/authorization_view_model.dart';
 class AuthButton extends StatelessWidget {
   String email;
   String password;
+  String name="";
   String title;
-  AuthButton({required this.password,required this.email,required this.title,Key? key}) : super(key: key);
+  AuthButton({this.name="",required this.password,required this.email,required this.title,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       onTap: (){
         context.read<AuthorizationViewModel>().checkInvalidity(email, password);
+        print("Some");
+        print(name);
+        if(name.isNotEmpty){
+          print("Adding user");
+         context.read<AuthorizationViewModel>().initCurrentUser(email, password, name);
+         context.read<AuthorizationViewModel>().addUser();
+
+        }
       },
       child: Container(
         height: MediaQuery.of(context).size.height*0.08,

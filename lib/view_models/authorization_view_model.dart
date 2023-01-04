@@ -6,11 +6,17 @@ import 'package:grofast/utils/instances/app_instances.dart';
 
 class AuthorizationViewModel extends ChangeNotifier{
 
+  UserModel? currentUser;
   bool isInvalidPassword=false;
   bool isInvalidEmail=false;
 
 
-  addUser(UserModel newUser)=>myLocator<AuthorizationRepository>().addUser(newUser);
+  addUser()=>myLocator<AuthorizationRepository>().addUser(currentUser!);
+
+  initCurrentUser(String email, String password,String name){
+    currentUser = UserModel(name: name, password: password, email: email, orders: []);
+    notifyListeners();
+  }
 
   checkInvalidity(String email,String password){
     isInvalidEmail=!EmailValidator.validate(email);

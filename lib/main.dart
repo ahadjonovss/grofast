@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:grofast/utils/instances/app_instances.dart';
 import 'package:grofast/utils/routes/app_routes.dart';
 import 'package:grofast/view_models/authorization_view_model.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   setUpLocators();
   runApp( MultiProvider(
     providers: [

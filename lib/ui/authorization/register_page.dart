@@ -62,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         visible:value.isInvalidPassword,
                         child:  const Text("Invalid password",style: TextStyle(color: Colors.red),)),
                     SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                    AuthButton(title: "Sign Up",password: passwordController.text,email: emailController.text),
+                    AuthButton(title: "Sign Up",password: passwordController.text,email: emailController.text,name: nameController.text),
                     SizedBox(height: MediaQuery.of(context).size.height*0.02),
                     Align(
                         alignment: Alignment.center,
