@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:grofast/data/models/user_model.dart';
 import '../../utils/instances/app_instances.dart';
 
-class AuthorizationRepository{
+class AuthorizationRepository {
 
-  Future<bool> addUser(UserModel newUser)async{
-    var isHasUser = await myLocator<FirebaseFirestore>().collection("users").where("email",isEqualTo: newUser.email).get();
-    if(isHasUser.docs.isEmpty){
+  Future<bool> signUp(UserModel newUser) async {
+    var isHasUser = await myLocator<FirebaseFirestore>()
+        .collection("users")
+        .where("email", isEqualTo: newUser.email)
+        .get();
+    if (isHasUser.docs.isEmpty) {
       DocumentReference docId =
-      await myLocator<FirebaseFirestore>().collection("users").add(newUser.toJson());
+      await myLocator<FirebaseFirestore>().collection("users").add(
+          newUser.toJson());
       await myLocator<FirebaseFirestore>()
           .collection("users")
           .doc(docId.id)
@@ -18,16 +22,21 @@ class AuthorizationRepository{
       });
       return true;
     }
-      return false;
-    }
-}
+    return false;
+  }
 
-  // Future<bool> logIn(String email,String password) async {
-  //   var user= await myLocator<FirebaseFirestore>().collection("users").where("email",isEqualTo: email).get();
-  //   if(user==null){
-  //     return false;
-  //   }else{
-  //     if(user["password"]==password);
-  //   }
-  // }
+
+  Future<String> signIn(String email, String password) async {
+    var user = await myLocator<FirebaseFirestore>().collection("users").where(
+        "email", isEqualTo: email).get();
+    if (user.docs.isEmpty) {
+      return "Account not found";
+    }
+    else if (user.docs[0]["password"] != password) {
+      return "Incorrect Password";
+    } else {
+      return "Welcome";
+    }
+  }
+}
 

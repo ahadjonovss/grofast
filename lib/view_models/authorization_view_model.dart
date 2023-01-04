@@ -13,15 +13,28 @@ class AuthorizationViewModel extends ChangeNotifier{
   bool isInvalidEmail=false;
 
 
-  addUser(context) async{
-    bool isRegistred = await myLocator<AuthorizationRepository>().addUser(currentUser!);
+  signUp(context) async{
+    bool isRegistred = await myLocator<AuthorizationRepository>().signUp(currentUser!);
     if(isRegistred==true){
-      loadingDialog(context);
+      loadingDialog(context,"Signing Up");
       Future.delayed(const Duration(seconds: 2)).then((value) => Navigator.pushNamedAndRemoveUntil(context, RouteName.mainPage, (route) => false));
     }else{
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Current email has already used"),duration: Duration(seconds: 2),));
     }
   }
+
+  signIn(context,{required email,required password}) async{
+    String message = await myLocator<AuthorizationRepository>().signIn(email.trim(), password.trim());
+    if(message=="Welcome"){
+      loadingDialog(context,"Signing In");
+      Future.delayed(const Duration(seconds: 2)).then((value) => Navigator.pushNamedAndRemoveUntil(context, RouteName.mainPage, (route) => false));
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(message),duration: const Duration(seconds: 2),));
+    }
+
+  }
+
+
 
   initCurrentUser(String email, String password,String name){
     currentUser = UserModel(name: name, password: password, email: email, orders: []);
